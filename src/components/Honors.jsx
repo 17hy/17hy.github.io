@@ -112,7 +112,7 @@ function Honors() {
         {/* 统计信息 */}
         <div className="mt-12 grid grid-cols-3 gap-6 text-center">
           <div className="p-6 bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 rounded-lg">
-            <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">1</div>
+            <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">3</div>
             <div className="text-sm text-slate-600 dark:text-slate-400">国家级奖项</div>
           </div>
           <div className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg">
