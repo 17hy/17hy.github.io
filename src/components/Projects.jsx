@@ -171,7 +171,7 @@ function Projects({ projects }) {
 
                   {/* 项目信息 */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 line-clamp-3 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
                       {project.name}
                     </h3>
                     
