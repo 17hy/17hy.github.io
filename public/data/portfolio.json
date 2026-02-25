@@ -119,7 +119,7 @@
       "startDate": "2026-01",
       "endDate": "2026-01",
       "status": "completed",
-      "featured": false
+      "featured": true
     }
   ],
   "privateResources": {
