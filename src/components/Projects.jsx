@@ -145,58 +145,66 @@ function Projects({ projects }) {
                   onClick={() => setSelectedProject(project)}
                   className="group cursor-pointer bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                 >
-                  {/* 项目图片 */}
-                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600">
-                    <img 
-                      src={project.image} 
-                      alt={project.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300"></div>
+                  {/* 项目头部 - 简洁渐变背景 */}
+                  <div className="relative h-32 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
+                    {/* 装饰性背景图案 */}
+                    <div className="absolute inset-0 opacity-10">
+                      <div className="absolute top-2 left-2 w-20 h-20 rounded-full border-2 border-white/30"></div>
+                      <div className="absolute bottom-4 right-4 w-32 h-32 rounded-full border-2 border-white/20"></div>
+                    </div>
                     
                     {/* 状态标签 */}
-                    <div className="absolute top-3 right-3">
+                    <div className="absolute top-3 right-3 z-10">
                       {project.status === 'ongoing' && (
                         <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-500 text-white shadow-lg">
                           进行中
                         </span>
                       )}
                       {project.status === 'completed' && (
-                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500 text-white shadow-lg">
+                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-400 text-white shadow-lg">
                           已完成
                         </span>
+                      )}
+                    </div>
+
+                    {/* 首个技术标签展示 */}
+                    <div className="relative z-10 text-center">
+                      {project.tags.length > 0 && (
+                        <div className="inline-block px-4 py-2 rounded-lg bg-white/20 backdrop-blur-sm text-white text-sm font-semibold">
+                          💡 {project.tags[0]}
+                        </div>
                       )}
                     </div>
                   </div>
 
                   {/* 项目信息 */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2 line-clamp-3 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                  <div className="p-5">
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 line-clamp-2 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors leading-snug">
                       {project.name}
                     </h3>
                     
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-3 flex items-center gap-2">
-                      <Calendar size={14} />
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1">
+                      <Calendar size={13} />
                       {project.startDate} ~ {project.endDate}
                     </p>
 
-                    <p className="text-slate-700 dark:text-slate-300 text-sm mb-4 line-clamp-2">
+                    <p className="text-slate-700 dark:text-slate-300 text-xs mb-3 line-clamp-1">
                       {project.description}
                     </p>
 
-                    {/* 技术标签 - 最多显示3个 */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.tags.slice(0, 3).map((tag, index) => (
+                    {/* 技术标签 - 最多显示2个 */}
+                    <div className="flex flex-wrap gap-1">
+                      {project.tags.slice(1, 3).map((tag, index) => (
                         <span 
                           key={index}
-                          className="px-2 py-1 text-xs rounded-md bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200"
+                          className="px-2 py-0.5 text-xs rounded-md bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200"
                         >
                           {tag}
                         </span>
                       ))}
                       {project.tags.length > 3 && (
-                        <span className="px-2 py-1 text-xs rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400">
-                          +{project.tags.length - 3}
+                        <span className="px-2 py-0.5 text-xs rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400">
+                          +{project.tags.length - 2}
                         </span>
                       )}
                     </div>
@@ -214,41 +222,47 @@ function Projects({ projects }) {
           </div>
         )}
 
-        {/* 其他项目 - 紧凑列表 */}
+        {/* 其他项目 - 简洁卡片列表 */}
         {otherProjects.length > 0 && (
           <div>
-            <h3 className="text-xl font-bold mb-6 text-slate-900 dark:text-white">其他项目</h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <h3 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">其他项目</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherProjects.map((project) => (
                 <div 
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  className="group cursor-pointer p-5 bg-white dark:bg-slate-800 rounded-lg shadow hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  className="group cursor-pointer bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="text-lg font-semibold text-slate-900 dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors line-clamp-1">
+                  {/* 项目头部 简洁版 */}
+                  <div className="relative h-28 overflow-hidden bg-gradient-to-br from-slate-400 to-slate-600 flex items-center justify-center p-4">
+                    {/* 装饰性背景 */}
+                    <div className="absolute inset-0 opacity-10">
+                      <div className="absolute top-1 left-1 w-16 h-16 rounded-full border-2 border-white/30"></div>
+                      <div className="absolute bottom-3 right-3 w-24 h-24 rounded-full border-2 border-white/20"></div>
+                    </div>
+                    
+                    {/* 首个特色标签 */}
+                    {project.tags.length > 0 && (
+                      <span className="relative z-10 inline-block px-3 py-1 rounded-lg bg-white/20 backdrop-blur-sm text-white text-xs font-semibold">
+                        {project.tags[0]}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* 项目信息 */}
+                  <div className="p-5">
+                    <h4 className="text-base font-bold text-slate-900 dark:text-white line-clamp-2 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors mb-1 leading-snug">
                       {project.name}
                     </h4>
-                    <Calendar size={16} className="text-slate-400 mt-1 flex-shrink-0 ml-2" />
-                  </div>
-                  
-                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
-                    {project.startDate} ~ {project.endDate}
-                  </p>
+                    
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1">
+                      <Calendar size={12} />
+                      {project.startDate} ~ {project.endDate}
+                    </p>
 
-                  <p className="text-slate-700 dark:text-slate-300 text-sm line-clamp-2 mb-3">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 4).map((tag, index) => (
-                      <span 
-                        key={index}
-                        className="px-2 py-1 text-xs rounded-md bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-200"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <p className="text-slate-700 dark:text-slate-300 text-xs line-clamp-1">
+                      {project.description}
+                    </p>
                   </div>
                 </div>
               ))}
