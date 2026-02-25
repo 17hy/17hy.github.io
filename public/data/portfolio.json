@@ -37,13 +37,13 @@
       "name": "基于广义相位调控的多边形涡旋光场整形研究",
       "description": "提出基于谐波调制的广义相位模型，实现三角形至六边形光场的确定性生成",
       "descriptionLong": "第一作者论文（在投）。通过Jacobi-Anger展开理论揭示光场几何锐化的物理机制，定义并验证有效调制指数对几何保真度的决定性作用，为各向异性光镊操控提供了无迭代算法的解析解。",
-      "image": "/projects/oam/1.png",
+      "image": "/projects/oam/1.jpg",
       "gallery": [
-        "/projects/oam/1.png",
-        "/projects/oam/2.png",
-        "/projects/oam/3.png",
-        "/projects/oam/4.png",
-        "/projects/oam/5.png"
+        "/projects/oam/1.jpg",
+        "/projects/oam/2.jpg",
+        "/projects/oam/3.jpg",
+        "/projects/oam/4.jpg",
+        "/projects/oam/5.jpg"
       ],
       "tags": ["光学理论", "数值仿真", "MATLAB", "相位调控", "OAM"],
       "github": "",
