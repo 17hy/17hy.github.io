@@ -1,0 +1,104 @@
+{
+  "personal": {
+    "name": "你的名字",
+    "title": "全栈工程师 | 个人开发者",
+    "bio": "热爱编程，专注于构建优秀的产品。",
+    "location": "城市，国家",
+    "email": "your.email@example.com",
+    "avatar": "https://avatars.githubusercontent.com/u/your-id",
+    "social": {
+      "github": "https://github.com/17hy",
+      "linkedin": "https://linkedin.com/in/your-profile",
+      "twitter": "https://twitter.com/yourhandle",
+      "blog": "https://yourblog.com"
+    }
+  },
+  "skills": [
+    {
+      "category": "前端",
+      "items": ["React", "Vue", "TypeScript", "Tailwind CSS", "Next.js"]
+    },
+    {
+      "category": "后端",
+      "items": ["Node.js", "Python", "Java", "MySQL", "MongoDB"]
+    },
+    {
+      "category": "工具",
+      "items": ["Git", "Docker", "AWS", "GitHub Actions", "Figma"]
+    },
+    {
+      "category": "其他",
+      "items": ["系统设计", "API设计", "项目管理", "技术文档"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-1",
+      "name": "项目名称1",
+      "description": "项目简短描述",
+      "descriptionLong": "项目详细描述，说明项目的目标和意义",
+      "image": "https://via.placeholder.com/400x300",
+      "tags": ["React", "TypeScript", "Tailwind CSS"],
+      "github": "https://github.com/17hy/project-1",
+      "demo": "https://project-1.example.com",
+      "startDate": "2025-01",
+      "endDate": "2025-06",
+      "status": "completed",
+      "featured": true
+    },
+    {
+      "id": "project-2",
+      "name": "项目名称2",
+      "description": "项目简短描述",
+      "descriptionLong": "项目详细描述，说明项目的目标和意义",
+      "image": "https://via.placeholder.com/400x300",
+      "tags": ["Node.js", "MongoDB", "Docker"],
+      "github": "https://github.com/17hy/project-2",
+      "demo": null,
+      "startDate": "2024-09",
+      "endDate": "2024-12",
+      "status": "completed",
+      "featured": true
+    },
+    {
+      "id": "project-3",
+      "name": "项目名称3",
+      "description": "项目简短描述",
+      "descriptionLong": "项目详细描述，说明项目的目标和意义",
+      "image": "https://via.placeholder.com/400x300",
+      "tags": ["Vue", "Python", "FastAPI"],
+      "github": null,
+      "demo": null,
+      "startDate": "2024-01",
+      "endDate": "2024-08",
+      "status": "completed",
+      "featured": false
+    }
+  ],
+  "privateResources": {
+    "title": "项目资料库",
+    "description": "包含详细的项目文档、源代码和案例分析",
+    "accessNote": "需要申请访问权限",
+    "contactEmail": "your.email@example.com",
+    "applyCTA": "申请访问",
+    "applyLink": "https://forms.example.com/access-request"
+  },
+  "testimonials": [
+    {
+      "author": "某位推荐人",
+      "title": "前CEO | 公司名",
+      "text": "推荐语",
+      "avatar": "https://via.placeholder.com/64x64"
+    }
+  ],
+  "experience": [
+    {
+      "company": "公司名称",
+      "position": "职位",
+      "startDate": "2024-01",
+      "endDate": "至今",
+      "description": "职位描述和主要成就",
+      "achievements": ["成就1", "成就2"]
+    }
+  ]
+}
