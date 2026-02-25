@@ -1,104 +1,116 @@
 {
   "personal": {
-    "name": "你的名字",
-    "title": "全栈工程师 | 个人开发者",
-    "bio": "热爱编程，专注于构建优秀的产品。",
-    "location": "城市，国家",
-    "email": "your.email@example.com",
-    "avatar": "https://avatars.githubusercontent.com/u/your-id",
+    "name": "郭黄与",
+    "title": "电子科学与技术 | 河海大学",
+    "bio": "专业排名 1/45，GPA 4.88/5.0。专注于光学系统设计、嵌入式硬件开发与边缘智能计算，在图像处理、电机驱动和国产化算力部署方面具有丰富的项目经验。",
+    "location": "江苏·南京",
+    "email": "2322020114@hhu.edu.cn",
+    "avatar": "https://avatars.githubusercontent.com/u/1?v=4",
     "social": {
       "github": "https://github.com/17hy",
       "linkedin": "https://linkedin.com/in/your-profile",
-      "twitter": "https://twitter.com/yourhandle",
-      "blog": "https://yourblog.com"
+      "twitter": "",
+      "blog": ""
     }
   },
   "skills": [
     {
-      "category": "前端",
-      "items": ["React", "Vue", "TypeScript", "Tailwind CSS", "Next.js"]
+      "category": "专业技能",
+      "items": ["光学理论与仿真", "数字信号处理", "嵌入式系统开发", "电路设计与PCB Layout", "电机驱动控制"]
     },
     {
-      "category": "后端",
-      "items": ["Node.js", "Python", "Java", "MySQL", "MongoDB"]
+      "category": "编程语言",
+      "items": ["Python", "C/C++", "MATLAB", "Verilog", "JavaScript"]
     },
     {
-      "category": "工具",
-      "items": ["Git", "Docker", "AWS", "GitHub Actions", "Figma"]
+      "category": "深度学习",
+      "items": ["YOLOv8", "PyTorch", "模型量化与部署", "边缘计算优化", "计算机视觉"]
     },
     {
-      "category": "其他",
-      "items": ["系统设计", "API设计", "项目管理", "技术文档"]
+      "category": "开发工具",
+      "items": ["Altium Designer", "COMSOL", "Simulink", "Git", "RK3588/NPU开发"]
     }
   ],
   "projects": [
     {
-      "id": "project-1",
-      "name": "项目名称1",
-      "description": "项目简短描述",
-      "descriptionLong": "项目详细描述，说明项目的目标和意义",
-      "image": "https://via.placeholder.com/400x300",
-      "tags": ["React", "TypeScript", "Tailwind CSS"],
-      "github": "https://github.com/17hy/project-1",
-      "demo": "https://project-1.example.com",
-      "startDate": "2025-01",
-      "endDate": "2025-06",
+      "id": "oam-phase-modulation",
+      "name": "基于广义相位调控的多边形涡旋光场整形研究",
+      "description": "提出基于谐波调制的广义相位模型，实现三角形至六边形光场的确定性生成",
+      "descriptionLong": "第一作者论文（在投）。通过Jacobi-Anger展开理论揭示光场几何锐化的物理机制，定义并验证有效调制指数对几何保真度的决定性作用，为各向异性光镊操控提供了无迭代算法的解析解。",
+      "image": "https://via.placeholder.com/400x300?text=OAM+Phase+Modulation",
+      "tags": ["光学理论", "数值仿真", "MATLAB", "相位调控", "OAM"],
+      "github": "",
+      "demo": "",
+      "startDate": "2025-10",
+      "endDate": "至今",
+      "status": "ongoing",
+      "featured": true
+    },
+    {
+      "id": "drone-water-perception",
+      "name": "基于国产算力的无人机水域感知与推理系统",
+      "description": "基于RK3588平台的边缘智能计算系统，实现实时目标检测与水文分析",
+      "descriptionLong": "团队负责人，2025年中国青年科技创新"揭榜挂帅"擂台赛全国三等奖。部署YOLOv8-s-p2模型，通过INT8量化将推理延迟压缩至72ms(42FPS)。融合LSPIV算法实现非接触式流速场反演，构建混合水文预测模型进行洪涝风险预警。",
+      "image": "https://via.placeholder.com/400x300?text=Drone+Water+System",
+      "tags": ["YOLOv8", "RK3588", "边缘计算", "INT8量化", "LSPIV", "水文分析"],
+      "github": "",
+      "demo": "",
+      "startDate": "2025-08",
+      "endDate": "2025-11",
       "status": "completed",
       "featured": true
     },
     {
-      "id": "project-2",
-      "name": "项目名称2",
-      "description": "项目简短描述",
-      "descriptionLong": "项目详细描述，说明项目的目标和意义",
-      "image": "https://via.placeholder.com/400x300",
-      "tags": ["Node.js", "MongoDB", "Docker"],
-      "github": "https://github.com/17hy/project-2",
-      "demo": null,
-      "startDate": "2024-09",
-      "endDate": "2024-12",
+      "id": "smart-car-competition",
+      "name": "第20届全国大学生智能车竞赛（独轮信标组）",
+      "description": "负责无刷与有刷电机驱动硬件设计，获华东赛区二等奖",
+      "descriptionLong": "核心队员，负责硬件驱动设计。自主设计三相全桥无刷驱动电路，优化栅极驱动信号与MOS管开关时序。设计大功率H桥有刷驱动，集成电流闭环与过流保护。优化电源分配网络（PDN），有效抑制电机高频干扰（EMI）。",
+      "image": "https://via.placeholder.com/400x300?text=Smart+Car",
+      "tags": ["无刷电机驱动", "H桥驱动", "PCB设计", "EMI抑制", "电源管理"],
+      "github": "",
+      "demo": "",
+      "startDate": "2025-03",
+      "endDate": "2025-08",
       "status": "completed",
       "featured": true
     },
     {
-      "id": "project-3",
-      "name": "项目名称3",
-      "description": "项目简短描述",
-      "descriptionLong": "项目详细描述，说明项目的目标和意义",
-      "image": "https://via.placeholder.com/400x300",
-      "tags": ["Vue", "Python", "FastAPI"],
-      "github": null,
-      "demo": null,
-      "startDate": "2024-01",
-      "endDate": "2024-08",
+      "id": "nus-ai-ml",
+      "name": "新加坡国立大学 AI & ML 访学项目",
+      "description": "人工智能与机器学习访学项目，结业项目获胜团队",
+      "descriptionLong": "参加新加坡国立大学人工智能与机器学习访学项目，深入学习前沿AI算法与应用。在结业项目中带领团队获得Winning Team荣誉，展示了在机器学习模型设计与优化方面的能力。",
+      "image": "https://via.placeholder.com/400x300?text=NUS+AI+ML",
+      "tags": ["人工智能", "机器学习", "NUS", "访学", "团队协作"],
+      "github": "",
+      "demo": "",
+      "startDate": "2026-01",
+      "endDate": "2026-01",
       "status": "completed",
       "featured": false
     }
   ],
   "privateResources": {
-    "title": "项目资料库",
-    "description": "包含详细的项目文档、源代码和案例分析",
-    "accessNote": "需要申请访问权限",
-    "contactEmail": "your.email@example.com",
-    "applyCTA": "申请访问",
-    "applyLink": "https://forms.example.com/access-request"
+    "title": "项目资料与成果库",
+    "description": "包含详细的项目文档、技术报告、论文手稿、竞赛材料、演示视频等完整项目资料",
+    "accessNote": "如果您对我的项目感兴趣或希望了解更多技术细节，欢迎申请访问",
+    "contactEmail": "2322020114@hhu.edu.cn",
+    "applyCTA": "发送邮件申请",
+    "applyLink": ""
   },
-  "testimonials": [
-    {
-      "author": "某位推荐人",
-      "title": "前CEO | 公司名",
-      "text": "推荐语",
-      "avatar": "https://via.placeholder.com/64x64"
-    }
-  ],
+  "testimonials": [],
   "experience": [
     {
-      "company": "公司名称",
-      "position": "职位",
-      "startDate": "2024-01",
+      "company": "河海大学",
+      "position": "电子科学与技术 本科生",
+      "startDate": "2023-09",
       "endDate": "至今",
-      "description": "职位描述和主要成就",
-      "achievements": ["成就1", "成就2"]
+      "description": "GPA: 4.88/5.0, 专业排名: 1/45",
+      "achievements": [
+        "2025年国家奖学金",
+        "第十九届"挑战杯"全国大学生课外学术科技作品竞赛全国三等奖",
+        "2025年度中国青年科技创新"揭榜挂帅"擂台赛全国三等奖",
+        "全国大学生智能汽车竞赛华东赛区二等奖"
+      ]
     }
   ]
 }
