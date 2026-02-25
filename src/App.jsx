@@ -24,7 +24,7 @@ const getDefaultData = () => ({
     }
   },
   skills: [
-    { category: '专业技能', items: ['光学理论与仿真', '数字信号处理', '嵌入式系统开发', '电路设计', '电机驱动控制'] },
+    { category: '专业技能', items: ['数字信号处理', '嵌入式系统开发', '电路设计', '电机驱动控制', '光学理论与仿真'] },
     { category: '编程语言', items: ['Python', 'C/C++', 'MATLAB', 'Verilog'] },
     { category: '深度学习', items: ['YOLOv8', 'PyTorch', '模型量化', '边缘计算', '计算机视觉'] },
     { category: '开发工具', items: ['Altium Designer', 'COMSOL', 'Simulink', 'Git'] }
