@@ -12,10 +12,10 @@ const getDefaultData = () => ({
   personal: {
     name: '郭黄与',
     title: '电子科学与技术 | 河海大学',
-    bio: '专业排名 1/45，GPA 4.88/5.0。专注于光学系统设计、嵌入式硬件开发与边缘智能计算。',
+    bio: '专业排名 1/45，GPA 4.9/5.0。专注于光学系统设计、嵌入式硬件开发与边缘智能计算。',
     location: '江苏·南京',
     email: '2322020114@hhu.edu.cn',
-    avatar: 'https://avatars.githubusercontent.com/u/1?v=4',
+    avatar: '/images/d175592cd18aff088324b517ff52a02.jpg',
     social: {
       github: 'https://github.com/17hy',
       linkedin: '',
