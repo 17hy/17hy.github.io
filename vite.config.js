@@ -7,8 +7,11 @@ export default defineConfig({
   server: {
     port: 3000,
     strictPort: false,
-    host: true,
-    open: false
+    host: '0.0.0.0',
+    hmr: {
+      protocol: 'ws',
+      port: 3000
+    }
   },
   build: {
     outDir: 'dist',
