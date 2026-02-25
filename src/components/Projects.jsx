@@ -1,8 +1,24 @@
 import { useState } from 'react'
-import { Github, ExternalLink, Calendar, X, Award } from 'lucide-react'
+import { Github, ExternalLink, Calendar, X, Award, ChevronLeft, ChevronRight, FileText } from 'lucide-react'
 
 function ProjectModal({ project, isOpen, onClose }) {
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0)
+  
   if (!isOpen) return null
+
+  const gallery = project.gallery || [project.image]
+  const currentItem = gallery[currentGalleryIndex]
+  const isPdf = currentItem.endsWith('.pdf')
+  
+  const handlePrevGallery = (e) => {
+    e.stopPropagation()
+    setCurrentGalleryIndex((prev) => prev === 0 ? gallery.length - 1 : prev - 1)
+  }
+  
+  const handleNextGallery = (e) => {
+    e.stopPropagation()
+    setCurrentGalleryIndex((prev) => prev === gallery.length - 1 ? 0 : prev + 1)
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in" onClick={onClose}>
@@ -21,35 +37,101 @@ function ProjectModal({ project, isOpen, onClose }) {
 
         {/* 内容区域 */}
         <div className="overflow-y-auto max-h-[90vh]">
-          {/* 顶部图片/横幅 */}
-          <div className="relative h-64 bg-gradient-to-br from-blue-500 to-purple-600">
-            <img 
-              src={project.image} 
-              alt={project.name}
-              className="w-full h-full object-cover opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 right-6">
-              <h2 className="text-3xl font-bold text-white mb-2">{project.name}</h2>
-              <div className="flex items-center gap-2 text-white/90">
-                <Calendar size={16} />
-                <span className="text-sm">{project.startDate} ~ {project.endDate}</span>
-                {project.status === 'ongoing' && (
-                  <span className="ml-3 px-3 py-1 text-xs font-semibold rounded-full bg-green-500/80 text-white">
-                    进行中
-                  </span>
-                )}
-                {project.status === 'completed' && (
-                  <span className="ml-3 px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/80 text-white">
-                    已完成
-                  </span>
-                )}
+          {/* 图片库展示 */}
+          <div className="relative h-96 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center overflow-hidden">
+            {isPdf ? (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-slate-800">
+                <FileText size={80} className="text-slate-500 mb-4" />
+                <p className="text-white text-lg mb-4">研究资料</p>
+                <a 
+                  href={currentItem}
+                  download
+                  className="flex items-center gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+                >
+                  <FileText size={20} />
+                  下载PDF文档
+                </a>
               </div>
-            </div>
+            ) : (
+              <img 
+                src={currentItem} 
+                alt={`${project.name} - 图片 ${currentGalleryIndex + 1}`}
+                className="w-full h-full object-contain"
+              />
+            )}
+
+            {/* 图片导航 */}
+            {gallery.length > 1 && (
+              <>
+                <button
+                  onClick={handlePrevGallery}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+                  aria-label="上一张"
+                >
+                  <ChevronLeft size={32} />
+                </button>
+                <button
+                  onClick={handleNextGallery}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/20 hover:bg-white/40 text-white transition-colors"
+                  aria-label="下一张"
+                >
+                  <ChevronRight size={32} />
+                </button>
+                
+                {/* 图片指示器 */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full bg-black/50 text-white text-sm">
+                  <span>{currentGalleryIndex + 1}</span>
+                  <span className="text-white/60">/</span>
+                  <span>{gallery.length}</span>
+                </div>
+              </>
+            )}
           </div>
+
+          {/* 图片缩略图导航 */}
+          {gallery.length > 1 && (
+            <div className="px-8 py-4 bg-slate-50 dark:bg-slate-700 flex gap-2 overflow-x-auto">
+              {gallery.map((item, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentGalleryIndex(index)}
+                  className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden transition-all ${
+                    index === currentGalleryIndex 
+                      ? 'ring-2 ring-blue-500 scale-105' 
+                      : 'opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  {item.endsWith('.pdf') ? (
+                    <div className="w-full h-full bg-slate-600 flex items-center justify-center">
+                      <FileText size={24} className="text-white" />
+                    </div>
+                  ) : (
+                    <img src={item} alt={`缩略图 ${index + 1}`} className="w-full h-full object-cover" />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* 详细内容 */}
           <div className="p-8">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">{project.name}</h2>
+            
+            <div className="flex items-center gap-2 text-slate-600 dark:text-slate-400 mb-6">
+              <Calendar size={16} />
+              <span>{project.startDate} ~ {project.endDate}</span>
+              {project.status === 'ongoing' && (
+                <span className="ml-3 px-3 py-1 text-xs font-semibold rounded-full bg-green-500/80 text-white">
+                  进行中
+                </span>
+              )}
+              {project.status === 'completed' && (
+                <span className="ml-3 px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/80 text-white">
+                  已完成
+                </span>
+              )}
+            </div>
+
             {/* 简短描述 */}
             <div className="mb-6">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">项目概述</h3>
@@ -145,13 +227,26 @@ function Projects({ projects }) {
                   onClick={() => setSelectedProject(project)}
                   className="group cursor-pointer bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                 >
-                  {/* 项目头部 - 简洁渐变背景 */}
-                  <div className="relative h-32 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
-                    {/* 装饰性背景图案 */}
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-2 left-2 w-20 h-20 rounded-full border-2 border-white/30"></div>
-                      <div className="absolute bottom-4 right-4 w-32 h-32 rounded-full border-2 border-white/20"></div>
-                    </div>
+                  {/* 项目头部 - 显示项目图片 */}
+                  <div className="relative h-40 overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4 group">
+                    {project.image.endsWith('.pdf') ? (
+                      /* PDF项目显示特殊样式 */
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-600 to-slate-800">
+                        <FileText size={64} className="text-slate-300 mb-2" />
+                        <p className="text-slate-300 text-sm font-semibold">研究资料</p>
+                        <p className="text-slate-400 text-xs mt-1">{project.gallery ? project.gallery.length : 1} 份文档</p>
+                      </div>
+                    ) : (
+                      /* 图片项目显示图片 */
+                      <>
+                        <img 
+                          src={project.image} 
+                          alt={project.name}
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent group-hover:from-black/20 transition-colors duration-300"></div>
+                      </>
+                    )}
                     
                     {/* 状态标签 */}
                     <div className="absolute top-3 right-3 z-10">
@@ -167,14 +262,12 @@ function Projects({ projects }) {
                       )}
                     </div>
 
-                    {/* 首个技术标签展示 */}
-                    <div className="relative z-10 text-center">
-                      {project.tags.length > 0 && (
-                        <div className="inline-block px-4 py-2 rounded-lg bg-white/20 backdrop-blur-sm text-white text-sm font-semibold">
-                          💡 {project.tags[0]}
-                        </div>
-                      )}
-                    </div>
+                    {/* 图片计数 */}
+                    {project.gallery && project.gallery.length > 1 && (
+                      <div className="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-black/50 text-white text-xs font-semibold backdrop-blur-sm">
+                        📸 {project.gallery.length} 张
+                      </div>
+                    )}
                   </div>
 
                   {/* 项目信息 */}
@@ -233,19 +326,22 @@ function Projects({ projects }) {
                   onClick={() => setSelectedProject(project)}
                   className="group cursor-pointer bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden"
                 >
-                  {/* 项目头部 简洁版 */}
-                  <div className="relative h-28 overflow-hidden bg-gradient-to-br from-slate-400 to-slate-600 flex items-center justify-center p-4">
-                    {/* 装饰性背景 */}
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-1 left-1 w-16 h-16 rounded-full border-2 border-white/30"></div>
-                      <div className="absolute bottom-3 right-3 w-24 h-24 rounded-full border-2 border-white/20"></div>
-                    </div>
-                    
-                    {/* 首个特色标签 */}
-                    {project.tags.length > 0 && (
-                      <span className="relative z-10 inline-block px-3 py-1 rounded-lg bg-white/20 backdrop-blur-sm text-white text-xs font-semibold">
-                        {project.tags[0]}
-                      </span>
+                  {/* 项目头部 - 显示项目图片 */}
+                  <div className="relative h-36 overflow-hidden bg-gradient-to-br from-slate-400 to-slate-600 flex items-center justify-center p-4 group">
+                    {project.image.endsWith('.pdf') ? (
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-slate-600 to-slate-800">
+                        <FileText size={48} className="text-slate-300 mb-1" />
+                        <p className="text-slate-300 text-xs font-semibold">研究资料</p>
+                      </div>
+                    ) : (
+                      <>
+                        <img 
+                          src={project.image} 
+                          alt={project.name}
+                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                      </>
                     )}
                   </div>
 
