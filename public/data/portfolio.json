@@ -8,7 +8,7 @@
     "avatar": "/images/d175592cd18aff088324b517ff52a02.jpg",
     "social": {
       "github": "https://github.com/17hy",
-      "linkedin": "https://linkedin.com/in/your-profile",
+      "linkedin": "",
       "twitter": "",
       "blog": ""
     }
@@ -37,7 +37,7 @@
       "id": "oam-phase-modulation",
       "name": "基于广义相位调控的多边形涡旋光场整形研究",
       "description": "提出基于谐波调制的广义相位模型，实现三角形至六边形光场的确定性生成",
-      "descriptionLong": "第一作者论文（在投）。通过Jacobi-Anger展开理论揭示光场几何锐化的物理机制，定义并验证有效调制指数对几何保真度的决定性作用，为各向异性光镊操控提供了无迭代算法的解析解。",
+      "descriptionLong": "第一作者论文（已发表）。通过Jacobi-Anger展开理论揭示光场几何锐化的物理机制，定义并验证有效调制指数对几何保真度的决定性作用，为各向异性光镊操控提供了无迭代算法的解析解。DOI: https://doi.org/10.1364/OE.595887",
       "image": "/projects/oam/1.jpg",
       "gallery": [
         "/projects/oam/1.jpg",
@@ -48,10 +48,10 @@
       ],
       "tags": ["光学理论", "数值仿真", "MATLAB", "相位调控", "OAM"],
       "github": "",
-      "demo": "",
+      "demo": "https://doi.org/10.1364/OE.595887",
       "startDate": "2025-10",
       "endDate": "至今",
-      "status": "ongoing",
+      "status": "completed",
       "featured": true
     },
     {

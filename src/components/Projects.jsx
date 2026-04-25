@@ -184,7 +184,7 @@ function ProjectModal({ project, isOpen, onClose }) {
                       rel="noopener noreferrer"
                       className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 border-primary text-primary dark:border-blue-400 dark:text-blue-400 hover:bg-primary hover:text-white dark:hover:bg-blue-400 dark:hover:text-slate-900 transition-colors font-semibold"
                     >
-                      <ExternalLink size={20} /> 在线演示
+                      <ExternalLink size={20} /> 论文链接/DOI
                     </a>
                   )}
                 </div>
